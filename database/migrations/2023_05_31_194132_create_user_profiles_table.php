@@ -15,6 +15,11 @@ class CreateUserProfilesTable extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('invoice_address')->nullable();
+            $table->string('invoice_postcode')->nullable();
+            $table->string('invoice_city')->nullable();
+            $table->foreignId('invoice_country_id')->nullable()->constrained('countries');
             $table->timestamps();
         });
     }
