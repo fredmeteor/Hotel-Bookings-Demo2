@@ -14,7 +14,10 @@ class AddGeocoordinatesToCountriesTable extends Migration
     public function up()
     {
         Schema::table('countries', function (Blueprint $table) {
-            //
+            $table->after('name', function() use ($table) {
+                $table->decimal('lat', 10, 7)->nullable();
+                $table->decimal('long', 10, 7)->nullable();
+            });
         });
     }
 
