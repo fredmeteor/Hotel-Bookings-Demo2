@@ -17,7 +17,14 @@ class Property extends Model
         'lat',
         'long',
     ];
+//Registering the Observer
 
+public static function booted()
+    {
+        parent::booted();
+
+        self::observe(PropertyObserver::class);
+    }
     public function city()
     {
         return $this->belongsTo(City::class);

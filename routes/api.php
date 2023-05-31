@@ -25,3 +25,10 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('user/bookings',
         [\App\Http\Controllers\User\BookingController::class, 'index']);
 });
+Route::middleware('auth:sanctum')->group(function () {
+    // ...
+
+    Route::post('owner/properties',
+        [\App\Http\Controllers\Owner\PropertyController::class, 'store']);
+
+});
